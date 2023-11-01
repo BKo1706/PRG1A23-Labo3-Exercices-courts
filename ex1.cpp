@@ -6,6 +6,9 @@ using namespace std;
 // qui retourne la somme de ses deux paramètres modulo
 // 1'000'000'000'000
 //
+long long int somme_modulo_mille_milliards(long long int a, long long int b){
+    return (a + b)%1000000000000;
+}
 
 int main() {
    cout << somme_modulo_mille_milliards(2,-3) << endl;

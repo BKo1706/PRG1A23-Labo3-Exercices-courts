@@ -11,6 +11,22 @@ using namespace std;
 // Vous pouvez uniquement utiliser la méthode length() et les
 // opérateurs [] et += de la classe string.
 
+string sous_chaine(string str, int pos, int len){
+    string s_c;
+    char c = str[pos];
+    if (pos > str.length()){
+        s_c = "";
+        return s_c;
+    }
+    if (len > str.length()) {
+        len = str.length() - pos;
+    }
+    for(int i = 0; i < len; ++i ){
+        char c1 = str[pos+i];
+        s_c += c1;
+    }
+    return s_c;
+}
 int main() {
 
    cout << sous_chaine("hello",1,3) << endl;
