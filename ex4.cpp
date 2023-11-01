@@ -15,7 +15,18 @@ using namespace std;
 //Essayez encore : 13
 //Essayez encore : 12
 //Merci, vous avez entre 12
-
+int lire_multiple_de(int n){
+    cout << "Entrez un entier multiple de " << n << ": ";
+    int multiple;
+    cin >> multiple;
+    while (cin.fail() || multiple%n != 0) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Essayez encore : ";
+        cin >> multiple;
+    }
+    return multiple;
+}
 int main() {
 
    int n = lire_multiple_de(3);
