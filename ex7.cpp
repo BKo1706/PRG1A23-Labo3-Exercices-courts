@@ -7,7 +7,29 @@ using namespace std;
 // Cette fonction doit fonctionner pour n positif ou nul et
 // pour b entre 2 et 36. Les chiffres de 10 à 35 utilisent
 // les lettres majuscules de A à Z.
+string en_base(int a, int b){
+    string s = "";
+    string f;
+    if(a == 0){
+        f = "0";
+    }
+    for (int i = a; i > 0; i/=b){
+        int r = i%b;
+        if (r > 9){
+            char c = 55+r;
+            s += c;
+        }
+        else
+            s  += to_string(r);
+    }
+    int d = 0;
+    for (int i = s.length()-1; i >= 0 ;--i){
+        f += s[i];
+    }
+    return f;
 
+
+}
 int main() {
 
   for(int b = 2; b <= 36; ++b)
