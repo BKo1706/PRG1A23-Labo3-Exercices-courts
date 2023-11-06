@@ -9,9 +9,36 @@ using namespace std;
 // contient le caractère (hors espace ' ') le plus fréquent dans ce fichier,
 // ainsi que le nombre de fois qu'il apparait. Ce nombre est négatif
 // si le fichier est illisible.
-
+int nb_char_in_file(string const& filename, char c) {
+    ifstream file(filename);
+    int cnt{};
+    char d;
+    while(file.get(d))
+        if(c == d)
+            ++cnt;
+    return cnt;
+}
+pair<char, int>caractere_le_plus_frequent(string const& filename){
+    ifstream file(filename);
+    if (!file)
+        return {0, -1};
+    char r = -1;
+    int cnt_r = 0;
+    for (int c = 0 ; c < 256; ++c){
+        if(c == 32) continue;
+        int cnt_c = nb_char_in_file(filename, c);
+        if (cnt_c > cnt_r){
+            cnt_r = cnt_c;
+            r = c;
+        }
+    }
+    return{r, cnt_r};
+}
 
 int main() {
+    ofstream file_out("test.txt", ios::out);
+    file_out << "premiere ligne avec c comme test\n";
+    file_out.close();
    cout << "Entrez le nom du fichier : " << flush;
    string filename;
    cin >> filename;
